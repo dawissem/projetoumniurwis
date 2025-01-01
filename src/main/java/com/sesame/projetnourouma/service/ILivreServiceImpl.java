@@ -25,10 +25,7 @@ public class ILivreServiceImpl implements ILivreService {
         return livre.orElse(null);
     }
 
-    @Override
-    public Livre saveLivre(Livre livre) {
-        return LivreRepository.save(livre);
-    }
+
 
     @Override
     public void deleteLivreById(int id) {

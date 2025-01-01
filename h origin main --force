@@ -1,0 +1,1088 @@
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/controler/AuteurController.java b/src/main/java/com/sesame/projetnourouma/controler/AuteurController.java[m
+[1mdeleted file mode 100644[m
+[1mindex efe90cd..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/controler/AuteurController.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,41 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.controler;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Auteur;[m
+[31m-import com.sesame.projetnourouma.service.IAuteurService;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.web.bind.annotation.*;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@RestController[m
+[31m-@RequestMapping("/api/auteurs")[m
+[31m-public class AuteurController {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private IAuteurService auteurService;[m
+[31m-[m
+[31m-    @GetMapping[m
+[31m-    public List<Auteur> getAllAuteurs() {[m
+[31m-        return auteurService.retrieveAllAuteurs();[m
+[31m-    }[m
+[31m-    @GetMapping("/{id}")[m
+[31m-    public Auteur getAuteurById(@PathVariable int id) {[m
+[31m-        return auteurService.retrieveAuteurById(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PostMapping[m
+[31m-    public Auteur createAuteur(@RequestBody Auteur auteur) {[m
+[31m-        return auteurService.addAuteur(auteur);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PutMapping[m
+[31m-    public Auteur updateAuteur(@RequestBody Auteur auteur) {[m
+[31m-        return auteurService.updateAuteur(auteur);[m
+[31m-    }[m
+[31m-[m
+[31m-    @DeleteMapping("/{id}")[m
+[31m-    public void  deleteAuteur(@PathVariable int id) {[m
+[31m-        auteurService.deleteAuteur(id);[m
+[31m-[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/controler/CategorieController.java b/src/main/java/com/sesame/projetnourouma/controler/CategorieController.java[m
+[1mdeleted file mode 100644[m
+[1mindex e30a0c0..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/controler/CategorieController.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,40 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.controler;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Categorie;[m
+[31m-import com.sesame.projetnourouma.service.ICategorieService;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.web.bind.annotation.*;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@RestController[m
+[31m-@RequestMapping("/api/categories")[m
+[31m-public class CategorieController {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private ICategorieService categorieService;[m
+[31m-    @PostMapping("/add")[m
+[31m-    public Categorie addCategorie(@RequestBody Categorie categorie) {[m
+[31m-        return categorieService.addCategorie(categorie);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PutMapping("/update")[m
+[31m-    public Categorie updateCategorie(@RequestBody Categorie categorie) {[m
+[31m-        return categorieService.updateCategorie(categorie);[m
+[31m-    }[m
+[31m-[m
+[31m-    @GetMapping("/get/{id}")[m
+[31m-    public Categorie getCategorie(@PathVariable int id) {[m
+[31m-        return categorieService.retreiveCategorieById(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    @DeleteMapping("/delete/{id}")[m
+[31m-    public void deleteCategorie(@PathVariable int id) {[m
+[31m-        categorieService.deleteCategorie(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    @GetMapping("/getAll")[m
+[31m-    public List<Categorie> getAllCategories() {[m
+[31m-        return categorieService.retrieveAllCategories();[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/controler/CompteContoller.java b/src/main/java/com/sesame/projetnourouma/controler/CompteContoller.java[m
+[1mdeleted file mode 100644[m
+[1mindex f44d8f2..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/controler/CompteContoller.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,45 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.controler;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Compte;[m
+[31m-import com.sesame.projetnourouma.service.ICompteService;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.web.bind.annotation.*;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@RestController[m
+[31m-@RequestMapping("/api/compte")[m
+[31m-public class CompteContoller {[m
+[31m-    @Autowired[m
+[31m- private ICompteService compteService;[m
+[31m-    @PostMapping("/add")[m
+[31m-    public Compte addCompte(@RequestBody Compte compte) {[m
+[31m-        return compteService.addCompte(compte);[m
+[31m-    }[m
+[31m-[m
+[31m-    // Modifier un compte[m
+[31m-    @PutMapping("/update")[m
+[31m-    public Compte updateCompte(@RequestBody Compte compte) {[m
+[31m-        return compteService.updateCompte(compte);[m
+[31m-    }[m
+[31m-[m
+[31m-    // Récupérer un compte par son ID[m
+[31m-    @GetMapping("/get/{id}")[m
+[31m-    public Compte getCompte(@PathVariable int id) {[m
+[31m-        return compteService.retrieveCompteById(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    // Supprimer un compte par son ID[m
+[31m-    @DeleteMapping("/delete/{id}")[m
+[31m-    public void deleteCompte(@PathVariable int id) {[m
+[31m-        compteService.deleteCompte(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    // Récupérer tous les comptes[m
+[31m-    @GetMapping("/getAll")[m
+[31m-    public List<Compte> getAllComptes() {[m
+[31m-        return compteService.retrieveAllComptes();[m
+[31m-    }[m
+[31m-}[m
+[31m-[m
+[31m-[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/controler/EmpruntController.java b/src/main/java/com/sesame/projetnourouma/controler/EmpruntController.java[m
+[1mdeleted file mode 100644[m
+[1mindex d0f46b9..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/controler/EmpruntController.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,41 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.controler;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Emprunt;[m
+[31m-import com.sesame.projetnourouma.service.IEmpruntService;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.web.bind.annotation.*;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@RestController[m
+[31m-@RequestMapping("/api/emprunt")[m
+[31m-public class EmpruntController {[m
+[31m-    @Autowired[m
+[31m-    private IEmpruntService empruntService;[m
+[31m-    @GetMapping("/getAll")[m
+[31m-    public List<Emprunt> getAllEmprunts() {[m
+[31m-        return empruntService.retrieveAllEmprunts();[m
+[31m-    }[m
+[31m-[m
+[31m-    @GetMapping("/get/{id}")[m
+[31m-    public Emprunt getEmprunt(@PathVariable int id) {[m
+[31m-        return empruntService.retrieveEmprunt(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PostMapping("/add")[m
+[31m-    public Emprunt addEmprunt(@RequestBody Emprunt emprunt) {[m
+[31m-        return empruntService.createEmprunt(emprunt);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PutMapping("/update")[m
+[31m-    public Emprunt updateEmprunt(@RequestBody Emprunt emprunt) {[m
+[31m-        return empruntService.updateEmprunt(emprunt);[m
+[31m-    }[m
+[31m-[m
+[31m-    @DeleteMapping("/delete/{id}")[m
+[31m-    public void deleteEmprunt(@PathVariable int id) {[m
+[31m-        empruntService.deleteEmprunt(id);[m
+[31m-    }[m
+[31m-}[m
+[31m-[m
+[31m-[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/controler/LivreController.java b/src/main/java/com/sesame/projetnourouma/controler/LivreController.java[m
+[1mindex 0e4a8cb..32f068c 100644[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/controler/LivreController.java[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/controler/LivreController.java[m
+[36m@@ -10,8 +10,10 @@[m [mimport java.util.List;[m
+ @RestController[m
+ @RequestMapping("/api/livre")[m
+ public class LivreController {[m
+[32m+[m
+     @Autowired[m
+     private ILivreService livreService;[m
+[32m+[m
+     @GetMapping("/getAll")[m
+     public List<Livre> getAllLivres() {[m
+         return livreService.retrieveAllLivres();[m
+[36m@@ -37,4 +39,3 @@[m [mpublic class LivreController {[m
+         livreService.deleteLivreById(id);[m
+     }[m
+ }[m
+[31m-[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/controler/PersonneController.java b/src/main/java/com/sesame/projetnourouma/controler/PersonneController.java[m
+[1mdeleted file mode 100644[m
+[1mindex 45b8723..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/controler/PersonneController.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,40 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.controler;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Personne;[m
+[31m-import com.sesame.projetnourouma.service.IPersonneService;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.web.bind.annotation.*;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@RestController[m
+[31m-@RequestMapping("/api/personne")[m
+[31m-public class PersonneController {[m
+[31m-    @Autowired[m
+[31m-    private IPersonneService personneService;[m
+[31m-    @GetMapping("/getAll")[m
+[31m-    public List<Personne> getAllPersonnes() {[m
+[31m-        return personneService.retrieveAllPersonnes();[m
+[31m-    }[m
+[31m-[m
+[31m-    @GetMapping("/get/{id}")[m
+[31m-    public Personne getPersonneById(@PathVariable int id) {[m
+[31m-        return personneService.retrievePersonne(id);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PostMapping("/add")[m
+[31m-    public Personne addPersonne(@RequestBody Personne personne) {[m
+[31m-        return personneService.addPersonne(personne);[m
+[31m-    }[m
+[31m-[m
+[31m-    @PutMapping("/update")[m
+[31m-    public Personne updatePersonne(@RequestBody Personne personne) {[m
+[31m-        return personneService.updatePersonne(personne);[m
+[31m-    }[m
+[31m-[m
+[31m-    @DeleteMapping("/delete/{id}")[m
+[31m-    public void deletePersonne(@PathVariable int id) {[m
+[31m-        personneService.deletePersonne(id);[m
+[31m-    }[m
+[31m-}[m
+[31m-[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Auteur.java b/src/main/java/com/sesame/projetnourouma/entities/Auteur.java[m
+[1mdeleted file mode 100644[m
+[1mindex 1ef48ce..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Auteur.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.entities;[m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import jakarta.persistence.ManyToMany;[m
+[31m-import lombok.AllArgsConstructor;[m
+[31m-import lombok.Getter;[m
+[31m-import lombok.NoArgsConstructor;[m
+[31m-import lombok.Setter;[m
+[31m-[m
+[31m-import java.io.Serializable;[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@Entity[m
+[31m-@Getter[m
+[31m-@Setter[m
+[31m-@NoArgsConstructor[m
+[31m-@AllArgsConstructor[m
+[31m-public class Auteur implements Serializable {[m
+[31m-    @Id[m
+[31m-    private int id;[m
+[31m-    private String nome;[m
+[31m-    private String prenom;[m
+[31m-    private String cin;[m
+[31m-    @ManyToMany[m
+[31m-    private List<Livre> aute;[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Categorie.java b/src/main/java/com/sesame/projetnourouma/entities/Categorie.java[m
+[1mdeleted file mode 100644[m
+[1mindex 3a44084..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Categorie.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.entities;[m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import jakarta.persistence.ManyToMany;[m
+[31m-import lombok.AllArgsConstructor;[m
+[31m-import lombok.Getter;[m
+[31m-import lombok.NoArgsConstructor;[m
+[31m-import lombok.Setter;[m
+[31m-[m
+[31m-import java.io.Serializable;[m
+[31m-import java.util.HashSet;[m
+[31m-import java.util.Set;[m
+[31m-[m
+[31m-@Entity[m
+[31m-@Getter[m
+[31m-@Setter[m
+[31m-@NoArgsConstructor[m
+[31m-@AllArgsConstructor[m
+[31m-public class Categorie implements Serializable {[m
+[31m-    @Id[m
+[31m-    private int id;[m
+[31m-    private String libelle;[m
+[31m-    @ManyToMany(mappedBy = "categories")[m
+[31m-    private Set<Livre> livres = new HashSet<>();[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Catg.java b/src/main/java/com/sesame/projetnourouma/entities/Catg.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..db4ef24[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/entities/Catg.java[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32mpackage com.sesame.projetnourouma.entities;[m
+[32m+[m
+[32m+[m[32mpublic enum Catg {[m
+[32m+[m[32m    ACTION,[m
+[32m+[m[32m    ROMANCE,[m
+[32m+[m[32m    HISTORIQUE,[m
+[32m+[m[32m    THRILLER,[m
+[32m+[m[32m    HORROR,[m
+[32m+[m[32m    ART_ET_CULTURE,[m
+[32m+[m[32m    TECHNOLOGIE,[m
+[32m+[m[32m    SCIENCE,[m
+[32m+[m[32m    SCIENCE_FICTION[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Compte.java b/src/main/java/com/sesame/projetnourouma/entities/Compte.java[m
+[1mdeleted file mode 100644[m
+[1mindex dcdc6d6..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Compte.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,24 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.entities;[m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import jakarta.persistence.OneToOne;[m
+[31m-import lombok.AllArgsConstructor;[m
+[31m-import lombok.Getter;[m
+[31m-import lombok.NoArgsConstructor;[m
+[31m-import lombok.Setter;[m
+[31m-[m
+[31m-import java.io.Serializable;[m
+[31m-[m
+[31m-@Entity[m
+[31m-@Getter[m
+[31m-@Setter[m
+[31m-@NoArgsConstructor[m
+[31m-@AllArgsConstructor[m
+[31m-public class Compte implements Serializable {[m
+[31m-    @Id[m
+[31m-    private int id;[m
+[31m-    private String login;[m
+[31m-    private String mot_de_passe;[m
+[31m-    @OneToOne[m
+[31m-    private Utilisateurs ut;[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Emprunt.java b/src/main/java/com/sesame/projetnourouma/entities/Emprunt.java[m
+[1mdeleted file mode 100644[m
+[1mindex 0a28eaf..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Emprunt.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,29 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.entities;[m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import jakarta.persistence.ManyToOne;[m
+[31m-import lombok.AllArgsConstructor;[m
+[31m-import lombok.Getter;[m
+[31m-import lombok.NoArgsConstructor;[m
+[31m-import lombok.Setter;[m
+[31m-[m
+[31m-[m
+[31m-import java.io.Serializable;[m
+[31m-import java.util.Date;[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-@Entity[m
+[31m-@Getter[m
+[31m-@Setter[m
+[31m-@NoArgsConstructor[m
+[31m-@AllArgsConstructor[m
+[31m-public class Emprunt implements Serializable {[m
+[31m-    @Id[m
+[31m-    private int id;[m
+[31m-    private Date date_retour;[m
+[31m-    private Date date_entourée;[m
+[31m-    @ManyToOne[m
+[31m-    private Utilisateurs em;[m
+[31m-    @ManyToOne[m
+[31m-    private Livre empt;[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Livre.java b/src/main/java/com/sesame/projetnourouma/entities/Livre.java[m
+[1mindex 271db2b..4af9779 100644[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Livre.java[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/entities/Livre.java[m
+[36m@@ -1,4 +1,5 @@[m
+ package com.sesame.projetnourouma.entities;[m
+[32m+[m
+ import jakarta.persistence.*;[m
+ import lombok.AllArgsConstructor;[m
+ import lombok.Getter;[m
+[36m@@ -7,9 +8,7 @@[m [mimport lombok.Setter;[m
+ [m
+ import java.io.Serializable;[m
+ import java.util.Date;[m
+[31m-import java.util.HashSet;[m
+ import java.util.List;[m
+[31m-import java.util.Set;[m
+ [m
+ @Entity[m
+ @Getter[m
+[36m@@ -18,22 +17,18 @@[m [mimport java.util.Set;[m
+ @AllArgsConstructor[m
+ public class Livre implements Serializable {[m
+     @Id[m
+[32m+[m[32m    @GeneratedValue(strategy = GenerationType.IDENTITY)[m
+     private int id;[m
+[32m+[m
+     private String titre;[m
+[31m-    private String ISBN;[m
+[31m-    private Date date_edition;[m
+[31m-    @OneToMany(mappedBy = "empt")[m
+[31m-    private List<Emprunt> Emprunts;[m
+[31m-    @OneToMany(mappedBy = "res")[m
+[31m-    private  List<Reservation> reservations;[m
+[31m-    @ManyToMany(mappedBy = "aute")[m
+[31m-    private List<Auteur> auteurs;[m
+[31m-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})[m
+[31m-    @JoinTable([m
+[31m-            name = "livre_categorie",[m
+[31m-            joinColumns = @JoinColumn(name = "livre_id"),[m
+[31m-            inverseJoinColumns = @JoinColumn(name = "categorie_id")[m
+[31m-    )[m
+[31m-    private Set<Categorie> categories = new HashSet<>();[m
+[32m+[m[32m    private String isbn;[m
+[32m+[m
+[32m+[m[32m    @Temporal(TemporalType.DATE)[m
+[32m+[m[32m    private Date dateEdition;[m
+[32m+[m
+[32m+[m[32m    @Enumerated(EnumType.STRING)[m
+[32m+[m[32m    private Catg categorie;[m
+ [m
+[32m+[m[32m    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)[m
+[32m+[m[32m    private List<Reservation> reservations;[m
+ }[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Personne.java b/src/main/java/com/sesame/projetnourouma/entities/Personne.java[m
+[1mdeleted file mode 100644[m
+[1mindex 6ab7fdb..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Personne.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,22 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.entities;[m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import lombok.AllArgsConstructor;[m
+[31m-import lombok.Getter;[m
+[31m-import lombok.NoArgsConstructor;[m
+[31m-import lombok.Setter;[m
+[31m-[m
+[31m-import java.io.Serializable;[m
+[31m-[m
+[31m-@Entity[m
+[31m-@Getter[m
+[31m-@Setter[m
+[31m-@NoArgsConstructor[m
+[31m-@AllArgsConstructor[m
+[31m-public class Personne implements Serializable {[m
+[31m-    @Id[m
+[31m-    private int id;[m
+[31m-    private String nome;[m
+[31m-    private String prenom;[m
+[31m-    private String Cin;[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Reservation.java b/src/main/java/com/sesame/projetnourouma/entities/Reservation.java[m
+[1mindex 2f37c04..61b510b 100644[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Reservation.java[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/entities/Reservation.java[m
+[36m@@ -1,18 +1,14 @@[m
+ package com.sesame.projetnourouma.entities;[m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import jakarta.persistence.ManyToOne;[m
+[31m-import jakarta.persistence.OneToOne;[m
+[32m+[m
+[32m+[m[32mimport jakarta.persistence.*;[m
+ import lombok.AllArgsConstructor;[m
+ import lombok.Getter;[m
+ import lombok.NoArgsConstructor;[m
+ import lombok.Setter;[m
+ [m
+[31m-[m
+ import java.io.Serializable;[m
+ import java.util.Date;[m
+ [m
+[31m-[m
+ @Entity[m
+ @Getter[m
+ @Setter[m
+[36m@@ -20,14 +16,23 @@[m [mimport java.util.Date;[m
+ @AllArgsConstructor[m
+ public class Reservation implements Serializable {[m
+     @Id[m
+[32m+[m[32m    @GeneratedValue(strategy = GenerationType.IDENTITY)[m
+     private int id;[m
+[31m-    private Date date_retour;[m
+[31m-    private Date date_annulation;[m
+[31m-    private Date date_reservation;[m
+[32m+[m
+[32m+[m[32m    @Temporal(TemporalType.DATE)[m
+[32m+[m[32m    private Date dateRetour;[m
+[32m+[m
+[32m+[m[32m    @Temporal(TemporalType.DATE)[m
+[32m+[m[32m    private Date dateAnnulation;[m
+[32m+[m
+[32m+[m[32m    @Temporal(TemporalType.DATE)[m
+[32m+[m[32m    private Date dateReservation;[m
+[32m+[m
+     @ManyToOne[m
+[31m-    private Utilisateurs re;[m
+[31m-    @OneToOne[m
+[31m-    private Utilisateurs uts;[m
+[32m+[m[32m    @JoinColumn(name = "utilisateur_id")[m
+[32m+[m[32m    private Utilisateurs utilisateur;[m
+[32m+[m
+     @ManyToOne[m
+[31m-    private Livre res;[m
+[32m+[m[32m    @JoinColumn(name = "livre_id")[m
+[32m+[m[32m    private Livre livre;[m
+ }[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Role.java b/src/main/java/com/sesame/projetnourouma/entities/Role.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..9733490[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/entities/Role.java[m
+[36m@@ -0,0 +1,7 @@[m
+[32m+[m[32mpackage com.sesame.projetnourouma.entities;[m
+[32m+[m
+[32m+[m[32mpublic enum Role {[m
+[32m+[m[32m    ADMINISTRATEUR,[m
+[32m+[m[32m    BIBLIOTHECAIRE,[m
+[32m+[m[32m    AUTEUR[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/entities/Utilisateurs.java b/src/main/java/com/sesame/projetnourouma/entities/Utilisateurs.java[m
+[1mindex 9ec8089..fbc7725 100644[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/entities/Utilisateurs.java[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/entities/Utilisateurs.java[m
+[36m@@ -1,9 +1,6 @@[m
+ package com.sesame.projetnourouma.entities;[m
+ [m
+[31m-import jakarta.persistence.Entity;[m
+[31m-import jakarta.persistence.Id;[m
+[31m-import jakarta.persistence.OneToMany;[m
+[31m-import jakarta.persistence.OneToOne;[m
+[32m+[m[32mimport jakarta.persistence.*;[m
+ import lombok.AllArgsConstructor;[m
+ import lombok.Getter;[m
+ import lombok.NoArgsConstructor;[m
+[36m@@ -17,20 +14,20 @@[m [mimport java.util.List;[m
+ @Setter[m
+ @NoArgsConstructor[m
+ @AllArgsConstructor[m
+[31m-public class Utilisateurs  implements Serializable {[m
+[32m+[m[32mpublic class Utilisateurs implements Serializable {[m
+     @Id[m
+[32m+[m[32m    @GeneratedValue(strategy = GenerationType.IDENTITY)[m
+     private int id;[m
+[32m+[m
+     private String name;[m
+     private String prenom;[m
+     private String cin;[m
+[31m-    @OneToOne(mappedBy = "ut")[m
+[31m-    private Compte compte;[m
+[31m-    @OneToMany(mappedBy = "em")[m
+[31m-    private List<Emprunt> emprunts;[m
+[31m-    @OneToMany(mappedBy = "re")[m
+[31m-    private List<Reservation>reservations;[m
+[31m-    @OneToOne(mappedBy = "uts")[m
+[31m-    private Reservation reservation;[m
+[32m+[m[32m    private String login;[m
+[32m+[m[32m    private String password;[m
+ [m
+[32m+[m[32m    @Enumerated(EnumType.STRING)[m
+[32m+[m[32m    private Role role;[m
+ [m
+[32m+[m[32m    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)[m
+[32m+[m[32m    private List<Reservation> reservations;[m
+ }[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/repository/IAuteurRepository.java b/src/main/java/com/sesame/projetnourouma/repository/IAuteurRepository.java[m
+[1mdeleted file mode 100644[m
+[1mindex 4bb3c5b..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/repository/IAuteurRepository.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,14 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.repository;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Auteur;[m
+[31m-import org.springframework.data.repository.CrudRepository;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-public interface IAuteurRepository extends CrudRepository<Auteur, Integer> {[m
+[31m-    public List<Auteur> findByNome(String nome);[m
+[31m-    public List<Auteur> findByPrenom(String prenom);[m
+[31m-    public List<Auteur> findByCin(String cin);[m
+[31m-[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/repository/ICategorieRepository.java b/src/main/java/com/sesame/projetnourouma/repository/ICategorieRepository.java[m
+[1mdeleted file mode 100644[m
+[1mindex 950070d..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/repository/ICategorieRepository.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.repository;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Categorie;[m
+[31m-import org.springframework.data.repository.CrudRepository;[m
+[31m-[m
+[31m-public interface ICategorieRepository extends CrudRepository<Categorie, Integer> {[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/repository/ICompteRepository.java b/src/main/java/com/sesame/projetnourouma/repository/ICompteRepository.java[m
+[1mdeleted file mode 100644[m
+[1mindex 6a7bf01..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/repository/ICompteRepository.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.repository;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Compte;[m
+[31m-import org.springframework.data.repository.CrudRepository;[m
+[31m-[m
+[31m-public interface ICompteRepository extends CrudRepository<Compte, Integer> {[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/repository/IEmpruntRepository.java b/src/main/java/com/sesame/projetnourouma/repository/IEmpruntRepository.java[m
+[1mdeleted file mode 100644[m
+[1mindex 1d5938b..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/repository/IEmpruntRepository.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.repository;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Emprunt;[m
+[31m-import org.springframework.data.repository.CrudRepository;[m
+[31m-[m
+[31m-public interface IEmpruntRepository extends CrudRepository<Emprunt, Integer> {[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/repository/IPersonneRepository.java b/src/main/java/com/sesame/projetnourouma/repository/IPersonneRepository.java[m
+[1mdeleted file mode 100644[m
+[1mindex 048498d..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/repository/IPersonneRepository.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.repository;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Personne;[m
+[31m-import org.springframework.data.repository.CrudRepository;[m
+[31m-[m
+[31m-public interface IPersonneRepository extends CrudRepository<Personne, Long> {[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/IAuteurService.java b/src/main/java/com/sesame/projetnourouma/service/IAuteurService.java[m
+[1mdeleted file mode 100644[m
+[1mindex 6b0ac00..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/IAuteurService.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,14 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Auteur;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-public interface IAuteurService {[m
+[31m-    public List<Auteur> retrieveAllAuteurs();[m
+[31m-    public Auteur retrieveAuteurById(int id);[m
+[31m-    public Auteur updateAuteur(Auteur auteur);[m
+[31m-    public Auteur addAuteur(Auteur auteur);[m
+[31m-    public void deleteAuteur(int id);[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/IAuteurServiceImpI.java b/src/main/java/com/sesame/projetnourouma/service/IAuteurServiceImpI.java[m
+[1mdeleted file mode 100644[m
+[1mindex db7f901..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/IAuteurServiceImpI.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,46 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Auteur;[m
+[31m-import com.sesame.projetnourouma.repository.IAuteurRepository;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.stereotype.Service;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-import java.util.Optional;[m
+[31m-[m
+[31m-@Service[m
+[31m-public class IAuteurServiceImpI implements IAuteurService {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private IAuteurRepository AuteurRepository;[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public List<Auteur> retrieveAllAuteurs() {[m
+[31m-        return (List<Auteur>) AuteurRepository.findAll();[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Auteur retrieveAuteurById(int id) {[m
+[31m-        Optional<Auteur> auteur = AuteurRepository.findById(id);[m
+[31m-        return auteur.orElse(null);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Auteur updateAuteur(Auteur auteur) {[m
+[31m-[m
+[31m-            return AuteurRepository.save(auteur);[m
+[31m-[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Auteur addAuteur(Auteur auteur) {[m
+[31m-        return AuteurRepository.save(auteur);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public void deleteAuteur(int id) {[m
+[31m-[m
+[31m-            AuteurRepository.deleteById(id);[m
+[31m-[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/ICategorieService.java b/src/main/java/com/sesame/projetnourouma/service/ICategorieService.java[m
+[1mdeleted file mode 100644[m
+[1mindex 4ea95f6..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/ICategorieService.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,13 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Categorie;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-public interface ICategorieService {[m
+[31m-    public List<Categorie> retrieveAllCategories();[m
+[31m-    public Categorie retreiveCategorieById(int id);[m
+[31m-    public Categorie addCategorie(Categorie categorie);[m
+[31m-    public Categorie updateCategorie(Categorie categorie);[m
+[31m-    public void deleteCategorie(int id);[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/ICategorieServiceImpI.java b/src/main/java/com/sesame/projetnourouma/service/ICategorieServiceImpI.java[m
+[1mdeleted file mode 100644[m
+[1mindex 1b1f201..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/ICategorieServiceImpI.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,48 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Categorie;[m
+[31m-import com.sesame.projetnourouma.repository.ICategorieRepository;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.stereotype.Service;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-import java.util.Optional;[m
+[31m-[m
+[31m-@Service[m
+[31m-public class ICategorieServiceImpI implements ICategorieService {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private ICategorieRepository CategorieRepository;[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public List<Categorie> retrieveAllCategories() {[m
+[31m-        return (List<Categorie>) CategorieRepository.findAll();[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Categorie retreiveCategorieById(int id) {[m
+[31m-        Optional<Categorie> categorie = CategorieRepository.findById(id);[m
+[31m-        return categorie.orElse(null);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Categorie addCategorie(Categorie categorie) {[m
+[31m-        return CategorieRepository.save(categorie);[m
+[31m-    }[m
+[31m-[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Categorie updateCategorie(Categorie categorie) {[m
+[31m-[m
+[31m-        return CategorieRepository.save(categorie);[m
+[31m-    }[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public void deleteCategorie(int id) {[m
+[31m-[m
+[31m-            CategorieRepository.deleteById(id);[m
+[31m-[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/ICompteService.java b/src/main/java/com/sesame/projetnourouma/service/ICompteService.java[m
+[1mdeleted file mode 100644[m
+[1mindex fb772cd..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/ICompteService.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,15 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Compte;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-public interface ICompteService {[m
+[31m-    public List<Compte> retrieveAllComptes();[m
+[31m-    public Compte retrieveCompteById(int id);[m
+[31m-    public Compte saveCompte(Compte compte);[m
+[31m-    public Compte updateCompte(Compte compte);[m
+[31m-    public void deleteCompte(int id);[m
+[31m-    public Compte addCompte(Compte compte);[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/ICompteServiceImpI.java b/src/main/java/com/sesame/projetnourouma/service/ICompteServiceImpI.java[m
+[1mdeleted file mode 100644[m
+[1mindex b664ed2..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/ICompteServiceImpI.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,53 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Categorie;[m
+[31m-import com.sesame.projetnourouma.entities.Compte;[m
+[31m-import com.sesame.projetnourouma.repository.ICompteRepository;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.stereotype.Service;[m
+[31m-[m
+[31m-import java.util.Collections;[m
+[31m-import java.util.List;[m
+[31m-import java.util.Optional;[m
+[31m-[m
+[31m-@Service[m
+[31m-public class ICompteServiceImpI implements ICompteService {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private ICompteRepository CompteRepository;[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public List<Compte> retrieveAllComptes() {[m
+[31m-        return (List<Compte>) CompteRepository.findAll();[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Compte retrieveCompteById(int id) {[m
+[31m-        Optional<Compte> compte = CompteRepository.findById(id);[m
+[31m-        return compte.orElse(null);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Compte saveCompte(Compte compte) {[m
+[31m-        return CompteRepository.save(compte);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Compte updateCompte(Compte compte) {[m
+[31m-[m
+[31m-            return CompteRepository.save(compte);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public void deleteCompte(int id) {[m
+[31m-[m
+[31m-            CompteRepository.deleteById(id);[m
+[31m-[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Compte addCompte(Compte compte) {[m
+[31m-        return CompteRepository.save(compte);    }[m
+[31m-[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/IEmpruntService.java b/src/main/java/com/sesame/projetnourouma/service/IEmpruntService.java[m
+[1mdeleted file mode 100644[m
+[1mindex 34c18e0..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/IEmpruntService.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,15 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Emprunt;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-public interface IEmpruntService {[m
+[31m-    public List<Emprunt> retrieveAllEmprunts();[m
+[31m-    public Emprunt retrieveEmprunt(int id);[m
+[31m-    public Emprunt createEmprunt(Emprunt emprunt);[m
+[31m-    public Emprunt updateEmprunt(Emprunt emprunt);[m
+[31m-    public void deleteEmprunt(int id);[m
+[31m-[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/IEmpruntServiceImpI.java b/src/main/java/com/sesame/projetnourouma/service/IEmpruntServiceImpI.java[m
+[1mdeleted file mode 100644[m
+[1mindex 7488860..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/IEmpruntServiceImpI.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,45 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Emprunt;[m
+[31m-import com.sesame.projetnourouma.repository.IEmpruntRepository;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.stereotype.Service;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-import java.util.Optional;[m
+[31m-[m
+[31m-@Service[m
+[31m-public class IEmpruntServiceImpI implements IEmpruntService {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private IEmpruntRepository EmpruntRepository;[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public List<Emprunt> retrieveAllEmprunts() {[m
+[31m-        return (List<Emprunt>) EmpruntRepository.findAll();[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Emprunt retrieveEmprunt(int id) {[m
+[31m-        Optional<Emprunt> emprunt = EmpruntRepository.findById(id);[m
+[31m-        return emprunt.orElse(null);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Emprunt createEmprunt(Emprunt emprunt) {[m
+[31m-        return EmpruntRepository.save(emprunt);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Emprunt updateEmprunt(Emprunt emprunt) {[m
+[31m-[m
+[31m-            return EmpruntRepository.save(emprunt);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public void deleteEmprunt(int id) {[m
+[31m-[m
+[31m-            EmpruntRepository.deleteById(id);[m
+[31m-[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/ILivreService.java b/src/main/java/com/sesame/projetnourouma/service/ILivreService.java[m
+[1mindex 5ef26df..6e956e7 100644[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/ILivreService.java[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/service/ILivreService.java[m
+[36m@@ -7,7 +7,6 @@[m [mimport java.util.List;[m
+ public interface ILivreService {[m
+     public List<Livre>retrieveAllLivres();[m
+     public Livre retrieveLivreById(int id);[m
+[31m-    public Livre saveLivre(Livre livre);[m
+     public void deleteLivreById(int id);[m
+     public Livre updateLivre(Livre livre);[m
+     public Livre addLivre(Livre livre);[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/ILivreServiceImpl.java b/src/main/java/com/sesame/projetnourouma/service/ILivreServiceImpl.java[m
+[1mindex de9429d..db82c5e 100644[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/ILivreServiceImpl.java[m
+[1m+++ b/src/main/java/com/sesame/projetnourouma/service/ILivreServiceImpl.java[m
+[36m@@ -25,10 +25,7 @@[m [mpublic class ILivreServiceImpl implements ILivreService {[m
+         return livre.orElse(null);[m
+     }[m
+ [m
+[31m-    @Override[m
+[31m-    public Livre saveLivre(Livre livre) {[m
+[31m-        return LivreRepository.save(livre);[m
+[31m-    }[m
+[32m+[m
+ [m
+     @Override[m
+     public void deleteLivreById(int id) {[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/IPersonneService.java b/src/main/java/com/sesame/projetnourouma/service/IPersonneService.java[m
+[1mdeleted file mode 100644[m
+[1mindex a96dc71..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/IPersonneService.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,14 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Personne;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-[m
+[31m-public interface IPersonneService {[m
+[31m-    public List<Personne> retrieveAllPersonnes();[m
+[31m-    public Personne retrievePersonne(int id);[m
+[31m-    public Personne createPersonne(Personne personne);[m
+[31m-    public Personne updatePersonne(Personne personne);[m
+[31m-    public void deletePersonne(int id);[m
+[31m-    public Personne addPersonne(Personne personne);[m
+[31m-}[m
+[1mdiff --git a/src/main/java/com/sesame/projetnourouma/service/IPersonneServiceImpI.java b/src/main/java/com/sesame/projetnourouma/service/IPersonneServiceImpI.java[m
+[1mdeleted file mode 100644[m
+[1mindex ee43252..0000000[m
+[1m--- a/src/main/java/com/sesame/projetnourouma/service/IPersonneServiceImpI.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,50 +0,0 @@[m
+[31m-package com.sesame.projetnourouma.service;[m
+[31m-[m
+[31m-import com.sesame.projetnourouma.entities.Personne;[m
+[31m-import com.sesame.projetnourouma.repository.IPersonneRepository;[m
+[31m-import org.springframework.beans.factory.annotation.Autowired;[m
+[31m-import org.springframework.stereotype.Service;[m
+[31m-[m
+[31m-import java.util.List;[m
+[31m-import java.util.Optional;[m
+[31m-[m
+[31m-@Service[m
+[31m-public class IPersonneServiceImpI implements IPersonneService {[m
+[31m-[m
+[31m-    @Autowired[m
+[31m-    private IPersonneRepository PersonneRepository;[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public List<Personne> retrieveAllPersonnes() {[m
+[31m-        return (List<Personne>) PersonneRepository.findAll();[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Personne retrievePersonne(int id) {[m
+[31m-        Optional<Personne> personne = PersonneRepository.findById((long) id);[m
+[31m-        return personne.orElse(null);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Personne createPersonne(Personne personne) {[m
+[31m-        return PersonneRepository.save(personne);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Personne updatePersonne(Personne personne) {[m
+[31m-[m
+[31m-            return PersonneRepository.save(personne);[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public void deletePersonne(int id) {[m
+[31m-[m
+[31m-            PersonneRepository.deleteById((long) id);[m
+[31m-[m
+[31m-    }[m
+[31m-[m
+[31m-    @Override[m
+[31m-    public Personne addPersonne(Personne personne) {[m
+[31m-        return PersonneRepository.save(personne);[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/src/main/resources/application.properties b/src/main/resources/application.properties[m
+[1mindex 398ef3e..dde7832 100644[m
+[1m--- a/src/main/resources/application.properties[m
+[1m+++ b/src/main/resources/application.properties[m
+[36m@@ -3,5 +3,7 @@[m [mspring.datasource.url=jdbc:mysql://localhost:3306/projetnourouma?allowPublicKeyR[m
+ spring.datasource.username=root[m
+ spring.datasource.password=[m
+ spring.jpa.show-sql=true[m
+[31m-spring.jpa.hibernate.ddl-auto=create-drop[m
+[32m+[m[32mspring.jpa.hibernate.ddl-auto=update[m
+ server.port=9090[m
+[32m+[m[32mserver.servlet.context-path=/projetnourouma[m
+[41m+[m

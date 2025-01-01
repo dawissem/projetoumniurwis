@@ -10,8 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/livre")
 public class LivreController {
+
     @Autowired
     private ILivreService livreService;
+
     @GetMapping("/getAll")
     public List<Livre> getAllLivres() {
         return livreService.retrieveAllLivres();
@@ -37,4 +39,3 @@ public class LivreController {
         livreService.deleteLivreById(id);
     }
 }
-

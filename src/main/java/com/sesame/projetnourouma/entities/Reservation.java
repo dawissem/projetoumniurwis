@@ -1,17 +1,13 @@
 package com.sesame.projetnourouma.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import java.io.Serializable;
 import java.util.Date;
-
 
 @Entity
 @Getter
@@ -20,14 +16,23 @@ import java.util.Date;
 @AllArgsConstructor
 public class Reservation implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date date_retour;
-    private Date date_annulation;
-    private Date date_reservation;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateRetour;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateAnnulation;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateReservation;
+
     @ManyToOne
-    private Utilisateurs re;
-    @OneToOne
-    private Utilisateurs uts;
+    @JoinColumn(name = "utilisateur_id")
+    private Utilisateurs utilisateur;
+
     @ManyToOne
-    private Livre res;
+    @JoinColumn(name = "livre_id")
+    private Livre livre;
 }
