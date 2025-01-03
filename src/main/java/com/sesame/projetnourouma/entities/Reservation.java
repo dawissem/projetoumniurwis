@@ -30,7 +30,7 @@ public class Reservation implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "utilisateur_id")
-    private Utilisateurs utilisateur;
+    private User utilisateur;
 
     @ManyToOne
     @JoinColumn(name = "livre_id")
