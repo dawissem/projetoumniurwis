@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/api/livre")
@@ -29,7 +30,8 @@ public class LivreController {
         return livreService.addLivre(livre);
     }
 
-    @PutMapping("/update")
+
+     @PutMapping("/update")
     public Livre updateLivre(@RequestBody Livre livre) {
         return livreService.updateLivre(livre);
     }

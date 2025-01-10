@@ -32,7 +32,7 @@ public class UserController {
         Optional<User> o=userRepo.findByLogin(request.getLogin());
         if(o.isEmpty())
         {
-            throw new UserNotFoundException("there is no user with this matricule ");
+            throw new UserNotFoundException("there is no user with this login ");
         }
         else if(Objects.equals(o.get().getPassword(), request.getPassword()))
         {
