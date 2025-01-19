@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 
 @RestController
 @RequestMapping("/api/livre")
@@ -18,6 +18,7 @@ public class LivreController {
     @GetMapping("/getAll")
     public List<Livre> getAllLivres() {
         return livreService.retrieveAllLivres();
+
     }
 
     @GetMapping("/get/{id}")
@@ -31,8 +32,9 @@ public class LivreController {
     }
 
 
-     @PutMapping("/update")
-    public Livre updateLivre(@RequestBody Livre livre) {
+    @PutMapping("/update/{id}")
+    public Livre updateLivre(@PathVariable int id, @RequestBody Livre livre) {
+        livre.setId(id); // Ensure the ID is set in the entity
         return livreService.updateLivre(livre);
     }
 

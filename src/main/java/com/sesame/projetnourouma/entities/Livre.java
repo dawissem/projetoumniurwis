@@ -1,5 +1,6 @@
 package com.sesame.projetnourouma.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Livre implements Serializable {
+public class Livre   {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,7 +29,11 @@ public class Livre implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Catg categorie;
+    @JsonIgnore
 
     @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
+
+
+
 }

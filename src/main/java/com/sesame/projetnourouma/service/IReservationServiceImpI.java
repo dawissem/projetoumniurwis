@@ -16,6 +16,7 @@ public class IReservationServiceImpI implements IReservationService {
 
     @Override
     public List<Reservation> retrieveAllReservations() {
+
         return (List<Reservation>) ReservationRepository.findAll();
     }
 
@@ -39,6 +40,7 @@ public class IReservationServiceImpI implements IReservationService {
     // Supprimer une réservation
     @Override
     public void deleteReservation(Reservation reservation) {
+
         ReservationRepository.delete(reservation);
     }
 }
