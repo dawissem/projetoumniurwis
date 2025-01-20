@@ -1,5 +1,6 @@
 package com.sesame.projetnourouma.controler;
 
+import com.sesame.projetnourouma.entities.Livre;
 import com.sesame.projetnourouma.entities.Reservation;
 import com.sesame.projetnourouma.service.IReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,14 @@ public class ReservationController {
     }
 
     @PutMapping("/update")
-    public Reservation updateReservation(@RequestBody Reservation reservation) {
+    public Reservation updateReservation(@PathVariable int id, @RequestBody Reservation reservation) {
+        reservation.setId(id);
         return reservationService.updateReservation(reservation);
     }
+
+
+
+
     @DeleteMapping("/delete/{id}")
         public void deleteReservation(@PathVariable int id) {
         reservationService.deleteReservation(id);        }

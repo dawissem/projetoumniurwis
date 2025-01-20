@@ -1,5 +1,6 @@
 package com.sesame.projetnourouma.service;
 
+import com.sesame.projetnourouma.entities.Livre;
 import com.sesame.projetnourouma.entities.Reservation;
 
 import java.util.List;
