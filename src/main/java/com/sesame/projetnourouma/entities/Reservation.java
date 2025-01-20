@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reservation implements Serializable {
+public class Reservation  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -2,6 +2,7 @@ package com.sesame.projetnourouma.controler;
 
 import com.sesame.projetnourouma.entities.Livre;
 import com.sesame.projetnourouma.service.ILivreService;
+import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,4 +43,24 @@ public class LivreController {
     public void deleteLivre(@PathVariable int id) {
         livreService.deleteLivreById(id);
     }
+
+
+    @GetMapping("/search/title")
+    public List<Livre> searchByTitle(@RequestParam String titre) {
+        return livreService.findByTitre(titre);
+    }
+    @GetMapping("/search/isbn")
+    public List<Livre> searchByIsbn(@RequestParam String isbn) {
+        return livreService.findByIsbn(isbn);
+    }
+
+
+    @GetMapping("/search/category")
+    public List<Livre> searchByCategory(@RequestParam Category categorie) {
+        return livreService.findByCategorie(categorie);
+    }
+
+
+
+
 }

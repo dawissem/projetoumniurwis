@@ -2,6 +2,7 @@ package com.sesame.projetnourouma.service;
 
 import com.sesame.projetnourouma.entities.Livre;
 import com.sesame.projetnourouma.repository.ILivreRepository;
+import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,4 +46,28 @@ public class ILivreServiceImpl implements ILivreService {
     public Livre addLivre(Livre livre) {
         return LivreRepository.save(livre);
     }
+
+
+
+    @Override
+    public List<Livre> findByTitre(String titre) {
+        return LivreRepository.findByIsbn(titre);
+    }
+
+    @Override
+    public List<Livre> findByIsbn(String isbn) {
+        return  LivreRepository.findByIsbn(isbn);
+    }
+
+    @Override
+    public List<Livre> findByCategorie(Category categorie) {
+        return  LivreRepository.findByCategorie(categorie);
+    }
+
+
+
+
+
+
+
 }
