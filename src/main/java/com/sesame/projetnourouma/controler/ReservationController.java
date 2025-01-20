@@ -33,10 +33,8 @@ public class ReservationController {
     public Reservation updateReservation(@RequestBody Reservation reservation) {
         return reservationService.updateReservation(reservation);
     }
-
-    @DeleteMapping("/delete")
-    public void deleteReservation(@RequestBody Reservation reservation) {
-        reservationService.deleteReservation(reservation);
-    }
+    @DeleteMapping("/delete/{id}")
+        public void deleteReservation(@PathVariable int id) {
+        reservationService.deleteReservation(id);        }
 }
 
